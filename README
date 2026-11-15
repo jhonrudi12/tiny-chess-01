@@ -15,5 +15,4 @@ illegal move.
 
 Run: start the kit env server, then
 `MAKEFUN_ENV_URL=http://127.0.0.1:8080 python3 main.py`.
-Plays the 6-game practice gauntlet, exits on `status: done`.
-Think time typically 2–3 s/move (limit 10 s). Deterministic.
+Think 2–3 s/move (limit 10 s).
