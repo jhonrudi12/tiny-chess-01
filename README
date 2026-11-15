@@ -1,0 +1,19 @@
+# tiny-chess-01 — 4 KB chess engine
+
+Single-file Python engine (`main.py`, 4,081 bytes) for MakeFun bounty
+tiny-chess-01. Python 3.13 stdlib only, deterministic, no model calls.
+
+Design: 120-square board, always White-to-move (board rotates 180 deg
+after each move). Immutable positions. Negamax alpha-beta + iterative
+deepening, fixed 60,000-node budget (no clock, no randomness).
+Quiescence (captures; all replies in check). Move-only transposition
+table + MVV ordering. Eval: material + tapered Michniewski PSTs
+(pawns/kings tapered; knights/bishops and rooks/queens share tables).
+No null-move, LMR, or killers (dropped to fit 4,096 bytes, see
+NOTES.md). Promotions queen-only; no en-passant. Never sends an
+illegal move.
+
+Run: start the kit env server, then
+`MAKEFUN_ENV_URL=http://127.0.0.1:8080 python3 main.py`.
+Plays the 6-game practice gauntlet, exits on `status: done`.
+Think time typically 2–3 s/move (limit 10 s). Deterministic.
